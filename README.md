@@ -29,11 +29,11 @@ The system provides remote monitoring through the Blynk platform and implements 
 
 ## System Architecture
 
-![Block Diagram](images/block_diagram.png)
+![Block Diagram](block_diagram.png)
 
 ## Hardware Prototype
 
-![Prototype](images/prototype.jpg)
+![Prototype](prototype.jpg)
 
 ## Blynk Dashboard
 
