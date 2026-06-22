@@ -37,7 +37,7 @@ The system provides remote monitoring through the Blynk platform and implements 
 
 ## Blynk Dashboard
 
-![Dashboard](images/blynk_dashboard.jpg)
+![Dashboard](blynk_dashboard.jpg)
 
 ## Working Principle
 
