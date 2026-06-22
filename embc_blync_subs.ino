@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL3LK0Hb07I"
+#define BLYNK_TEMPLATE_ID "<enter template id>"
 #define BLYNK_TEMPLATE_NAME "Smart Substation"
-#define BLYNK_AUTH_TOKEN "XMYqS-eUOoOIYhNDJ_CwELZPR7DF94CP"
+#define BLYNK_AUTH_TOKEN "<enter auth token>"
 
 #define BLYNK_PRINT Serial
 
@@ -38,7 +38,7 @@ float sensitivity = 0.185;
 
 // THRESHOLDS 
 #define CURRENT_TRIP 15.0
-#define IR_THRESHOLD 120   // 🔥 NEW
+#define IR_THRESHOLD 120   
 
 // IR AVERAGING FUNCTION 
 int getAverageIR() {
@@ -103,7 +103,7 @@ void sendData() {
   oilPercent = readOilLevel();
   irValue = getAverageIR();
 
-  // CURRENT SENSOR --------
+  // CURRENT SENSOR 
   int sum = 0;
   for (int i = 0; i < 20; i++) {
     sum += analogRead(CURRENT_PIN);
@@ -118,7 +118,7 @@ void sendData() {
 
   if (abs(current) < 0.1) current = 0;
 
-  // -------- OIL QUALITY --------
+  //  OIL QUALITY 
   int oilQualityStatus;
 
   if (irValue > IR_THRESHOLD) {
@@ -127,7 +127,7 @@ void sendData() {
     oilQualityStatus = 0; // CLEAN
   }
 
-  // -------- RELAY CONTROL --------
+  // RELAY CONTROL 
   bool relayON;
 
   if (current > CURRENT_TRIP) {
@@ -140,16 +140,15 @@ void sendData() {
 
   digitalWrite(RELAY_PIN, relayON ? LOW : HIGH);
 
-  // -------- SERVO --------
+  // SERVO 
   tapServo.write(servoPosition);
 
-  // -------- BLYNK OUTPUT --------
+  // BLYNK OUTPUT 
   Blynk.virtualWrite(V0, oilPercent);
   Blynk.virtualWrite(V1, oilQualityStatus);
   Blynk.virtualWrite(V2, current);
 
-  // -------- DEBUG --------
-  Serial.println("------ DATA ------");
+  //  DEBUG 
   Serial.print("IR Avg: "); Serial.println(irValue);
   Serial.print("Oil Quality: "); Serial.println(oilQualityStatus ? "DIRTY" : "CLEAN");
   Serial.print("Voltage: "); Serial.println(voltage);
@@ -159,10 +158,9 @@ void sendData() {
   Serial.print("Relay State: "); Serial.println(relayON);
   Serial.print("GPIO OUT: ");
   Serial.println(relayON ? "LOW (ON)" : "HIGH (OFF)");
-  Serial.println("------------------\n");
 }
 
-// ---------------- SETUP ----------------
+//  SETUP 
 void setup() {
   Serial.begin(115200);
 
@@ -189,7 +187,7 @@ void setup() {
   timer.setInterval(2000L, sendData);
 }
 
-// ---------------- LOOP ----------------
+// LOOP 
 void loop() {
   Blynk.run();
   timer.run();
