@@ -55,10 +55,10 @@ The system provides remote monitoring through the Blynk platform and implements 
 |-----------|------------|
 | GPIO 33 | HC-SR04 Trigger |
 | GPIO 32 | HC-SR04 Echo |
-| GPIO 14 | IR Sensor |
+| GPIO 35 | IR Sensor |
 | GPIO 34 | ACS712 |
 | GPIO 27 | Relay Module |
-| GPIO 23 | Servo Motor |
+| GPIO 13 | Servo Motor |
 
 
 ## Software Used
